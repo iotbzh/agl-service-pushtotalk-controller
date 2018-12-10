@@ -1,0 +1,35 @@
+{
+  "$schema": "http://iot.bzh/download/public/schema/json/ctl-schema.json",
+  "metadata": {
+    "uid": "ctlapp_sample",
+    "version": "1.0",
+    "api": "agl_services_ctlapp_sample",
+    "info": "ctlapp_sample service service to interface with homescreen & application framework"
+  },
+  "plugins": [{
+    "uid": "ctlapp_sample",
+    "info": "Plugin to handle interface with ctlapp_sample_app",
+    "libs": [
+      "ctlapp_sample.ctlso",
+      "ctlapp_sample-api.lua"
+    ]
+  }],
+
+  "onload": [{
+    "uid": "ctlapp_sample/run_onload",
+    "action": "lua://ctlapp_sample#_run_onload_"
+  }],
+
+  "controls": [{
+    "uid": "ping",
+    "action": "plugin://ctlapp_sample#ping"
+  }, {
+    "uid": "display",
+    "action": "lua://ctlapp_sample#_display_application_"
+  }],
+
+  "events": [{
+    "uid": "ctlapp_sample_event",
+    "action": "lua://ctlapp_sample#_evt_catcher_"
+  }]
+}
