@@ -40,12 +40,29 @@ function _run_onload_(source)
 end
 
 
+function do_call_verbs(source, state, direction_args, alexa_args)
+    if (state == "pressed") then
+        local err, response =AFB:servsync (source, "agl_service_pushtotalk_controller", "fake_direction", direction_args)
+        if (err) then
+            AFB:fail(source, "ERROR: while calling SET DIRECTION verb")
+            return 1
+        end
+        local err, response =AFB:servsync (source, "agl_service_pushtotalk_controller", "fake_alexa_listen", alexa_args)
+        if (err) then
+            AFB:fail(source, "ERROR: while calling ALEXA LISTEN verb")
+            return 1
+        end
+    end
+end
+
 function driver_button_event(source, action, event)
-    AFB:notice(source, "--InLua-- RECV EVENT=%s (%s)", Dump_Table(event), action)
+    AFB:debug(source, "--InLua-- DRIVER RECV EVENT=%s (%s)", Dump_Table(event), action)
+    do_call_verbs(source, event["state"], { angle = 45 }, nil)
 end
 
 function passenger_button_event(source, action, event)
-    AFB:notice(source, "--InLua-- RECV EVENT=%s (%s)", Dump_Table(event), action)
+    AFB:debug(source, "--InLua-- PASSENGER RECV EVENT=%s (%s)", Dump_Table(event), action)
+    do_call_verbs(source, event["state"], { angle = 135 }, nil)
 end
 
 

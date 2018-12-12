@@ -1,4 +1,4 @@
-# agl_services_ctlapp_sample
+# agl_service_pushtotalk_controller
 
 Push To Talk controller for CES 2019 demo. This controller subscribes/listens to HID button events. When events are received (driver or passenger
 wants to talk), calls the corresponding verbs of microphone (to set direction) and voice recognition module (to start the audio analyse).

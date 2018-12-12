@@ -16,7 +16,7 @@
 # limitations under the License.
 ###########################################################################
 
-# PROJECT_TARGET_ADD(ctlapp_sample)
+# PROJECT_TARGET_ADD(pushtotalk)
 #
 # 		# Define targets
 # 		ADD_LIBRARY(${TARGET_NAME} MODULE
@@ -40,7 +40,7 @@
 # 		PRIVATE "${CMAKE_SOURCE_DIR}/app-controller/ctl-lib")
 
 
-PROJECT_TARGET_ADD(ctlapp_sample-lua)
+PROJECT_TARGET_ADD(pushtotalk-lua)
     file(GLOB LUA_FILES "*.lua")
 
 	add_input_files("${LUA_FILES}")

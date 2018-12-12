@@ -15,7 +15,7 @@
 ###########################################################################
 
 # Add target to project dependency list
-PROJECT_TARGET_ADD(agl_services_ctlapp_sample)
+PROJECT_TARGET_ADD(agl_services_pushtotalk)
 
 	# Define project Targets
 	add_library(${TARGET_NAME} MODULE

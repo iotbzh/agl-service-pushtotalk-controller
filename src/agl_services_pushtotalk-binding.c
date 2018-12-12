@@ -22,9 +22,7 @@
 #include <string.h>
 #include <time.h>
 
-#include "agl_services_ctlapp_sample-binding.h"
-
-AFB_ApiT AFB_default;
+#include "agl_services_pushtotalk-binding.h"
 
 // Config Section definition (note: controls section index should match handle
 // retrieval in HalConfigExec)
@@ -98,7 +96,7 @@ static int CtrlLoadOneApi(void* cbdata, AFB_ApiT apiHandle)
     // add static controls verbs
     int err = CtrlLoadStaticVerbs(apiHandle, CtrlApiVerbs);
     if (err) {
-        AFB_ApiError(apiHandle, "CtrlLoadSection fail to register static V2 verbs");
+        AFB_ApiError(apiHandle, "CtrlLoadSection fail to register static verbs");
         return ERROR;
     }
 
@@ -117,7 +115,6 @@ static int CtrlLoadOneApi(void* cbdata, AFB_ApiT apiHandle)
 
 int afbBindingEntry(AFB_ApiT apiHandle)
 {
-    AFB_default = apiHandle;
     AFB_ApiNotice(apiHandle, "Controller in afbBindingEntry");
 
       size_t len = 0, bindingRootDirLen = 0;
