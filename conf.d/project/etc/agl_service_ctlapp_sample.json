@@ -1,35 +1,40 @@
 {
   "$schema": "http://iot.bzh/download/public/schema/json/ctl-schema.json",
   "metadata": {
-    "uid": "ctlapp_sample",
+    "uid": "pushtotalk_controller",
     "version": "1.0",
-    "api": "agl_services_ctlapp_sample",
-    "info": "ctlapp_sample service service to interface with homescreen & application framework"
+    "api": "agl_service_pushtotalk_controller",
+    "info": "push-to-talk controller"
   },
   "plugins": [{
-    "uid": "ctlapp_sample",
-    "info": "Plugin to handle interface with ctlapp_sample_app",
+    "uid": "pushtotalk",
+    "info": "pushtotalk functions",
     "libs": [
-      "ctlapp_sample.ctlso",
-      "ctlapp_sample-api.lua"
+      "pushtotalk-api.lua",
     ]
   }],
 
   "onload": [{
     "uid": "ctlapp_sample/run_onload",
-    "action": "lua://ctlapp_sample#_run_onload_"
+    "action": "lua://pushtotalk#_run_onload_"
   }],
 
   "controls": [{
-    "uid": "ping",
-    "action": "plugin://ctlapp_sample#ping"
-  }, {
-    "uid": "display",
-    "action": "lua://ctlapp_sample#_display_application_"
-  }],
+    "uid": "fake_direction",
+    "action": "lua://pushtotalk#fake_direction"
+  },
+  {
+    "uid": "fake_alexa_listen",
+    "action": "lua://pushtotalk#fake_alexa_listen"
+  },
+  ],
 
   "events": [{
-    "uid": "ctlapp_sample_event",
-    "action": "lua://ctlapp_sample#_evt_catcher_"
+    "uid": "/dev/input/js0-button0",
+    "action": "lua://push-to-talk#driver_button_event",
+  },
+  {
+    "uid": "/dev/input/js0-button11",
+    "action": "lua://push-to-talk#passenger_button_event",
   }]
 }

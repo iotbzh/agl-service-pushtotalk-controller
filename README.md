@@ -1,6 +1,7 @@
 # agl_services_ctlapp_sample
 
-This code was developped during Yokohama CES-2019 integration workshop
+Push To Talk controller for CES 2019 demo. This controller subscribes/listens to HID button events. When events are received (driver or passenger
+wants to talk), calls the corresponding verbs of microphone (to set direction) and voice recognition module (to start the audio analyse).
 
 ## Native build
 
@@ -14,14 +15,6 @@ make
 
 ```bash
 # Native binder
-afb-daemon --port=1111 --name=afb-ctlapp-sample --workdir=$HOME/xxxxx/agl-services-ctlapp-/build/package --ldpaths=lib --roothttp=htdocs --token= --verbose
+afb-daemon --port=2345 --name=afb-pushtotalk --token= -vvv
 ```
 
-```bash
-curl -s http://localhost:1111/api/ctlapp/start?token=HELLO&name=navigation 
-
-
-You can also use the basic html app
-```
-chromium http://localhost:1111
-```
