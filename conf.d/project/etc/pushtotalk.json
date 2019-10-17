@@ -30,11 +30,11 @@
   ],
 
   "events": [{
-    "uid": "buttons//dev/input/js0-button0",
+    "uid": "linux-joystick//dev/input/js0-button0",
     "action": "lua://push-to-talk#driver_button_event",
   },
   {
-    "uid": "buttons//dev/input/js0-button11",
+    "uid": "linux-joystick//dev/input/js0-button11",
     "action": "lua://push-to-talk#passenger_button_event",
   }]
 }

@@ -25,14 +25,14 @@
 function _run_onload_(source)
     AFB:notice(source, "--InLua-- ENTER _run_onload_ CTLapp service sample\n")
 
-    local err, response =AFB:servsync (source, "buttons", "subscribe", { device = "/dev/input/js0", button=0})
+    local err, response =AFB:servsync (source, "linux-joystick", "subscribe", { device = "/dev/input/js0", input_type="button", input_id='0'})
     if (err) then
-       AFB:error(source, "--inlua-- Cannot subscribe to driver's button event")
+       AFB:error(source, "--inlua-- Cannot subscribe to driver's button event: ", response)
        return 1
     end
-    local err, response =AFB:servsync (source, "buttons", "subscribe", { device = "/dev/input/js0", button=11})
+    local err, response =AFB:servsync (source, "linux-joystick", "subscribe", { device = "/dev/input/js0", input_type="button", input_id="11"})
     if (err) then
-       AFB:error(source, "--inlua-- Cannot subscribe to passenger's button event")
+       AFB:error(source, "--inlua-- Cannot subscribe to passenger's button event: ", response)
        return 1
     end
 

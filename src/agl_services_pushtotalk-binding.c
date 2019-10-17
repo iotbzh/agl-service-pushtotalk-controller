@@ -141,12 +141,12 @@ int afbBindingEntry(AFB_ApiT apiHandle)
     bindingRootDirLen = strlen(bindingRootDir);
 
     if(envDirList) {
-        len = strlen(CONTROL_CONFIG_PATH) + strlen(envDirList) + bindingRootDirLen + 3;
+        len = strlen(CONTROL_CONFIG_PATH) + strlen(envDirList) + strlen(afTestRootDir) + bindingRootDirLen + 3;
         dirList = malloc(len + 1);
         snprintf(dirList, len +1, "%s:%s:%s:%s", envDirList, afTestRootDir, bindingRootDir, CONTROL_CONFIG_PATH);
     }
     else {
-        len = strlen(CONTROL_CONFIG_PATH) + bindingRootDirLen + 2;
+        len = strlen(CONTROL_CONFIG_PATH) + strlen(afTestRootDir) + bindingRootDirLen + 2;
         dirList = malloc(len + 1);
         snprintf(dirList, len + 1, "%s:%s:%s", bindingRootDir, afTestRootDir, CONTROL_CONFIG_PATH);
     }
